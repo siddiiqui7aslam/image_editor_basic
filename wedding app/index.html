@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload UI</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <button class="back-button" onclick="goBack()">&#8249;</button>
+    <h2 class="title">Add Image / Icon</h2>
+  </header>
+
+  <!-- home   -->
+  <div class="container">
+    <div class="upload-box"> 
+      <h3 class="label">Upload Image</h3>
+      <div class="upload-area">
+        <label for="imageUpload" class="upload-label">Choose from Device</label>
+        <input type="file" id="imageUpload" accept="image/*" onchange="previewImage()" style="display: none;" />
+      </div>
+    </div>
+    
+    <!-- peview -->
+    <div class="preview">
+      <img id="imagePreview" src="" alt="Your image will appear here" style="display: none;" />
+    </div>
+  </div>
+
+  <!-- container -->
+  <div class="crop-container" style="display: none;">
+    <!-- controls-->
+    <div class="crop-controls">
+      <button class="back-button" id="bb" onclick="goBack()">&#8249;</button>
+      <div class="right-controls">
+        <button class="rotate-button" id="bb" onclick="rotateImage()">&#x21bb;</button>
+        <button class="flip-button" id="bb" onclick="toggleFlipMenu()">⚙️</button> <!-- flip  -->
+        <div class="flip-menu" id="bb" style="display: none;">
+          <button id="bb" onclick="flipImage('horizontal')">Flip Horizontally</button>
+          <button id="bb" onclick="flipImage('vertical')">Flip Vertically</button>
+        </div>
+        <button class="crop-button" id="bb" onclick="cropImage()">Crop</button> <!-- crop  -->
+      </div>
+    </div>
+
+    <!-- cropped image display -->
+    <img id="croppedImage" src="" alt="Cropped Image" style="display: none;" />
+  </div>
+<div class="overlay" id="modalOverlay"></div>
+
+  <!-- floating page  -->
+  <div class="floating-modal" id="floatingModal" style="display: none;">
+    <h3>Choose Shape</h3>
+    <span class="close-btn" onclick="cancelAllEdits()">&times;</span>
+    <div class="thumbnail-preview">
+        <img id="smallCroppedImage" src="" />
+    </div>
+    
+    <div class="original-photo-box">
+        <button onclick="showOriginalPhoto()">Original Photo</button>
+        <img id="originalimg" src="" style="display: none;" />
+    </div>
+
+    <div class="shape-options">
+        <img src="asset/user_image_frame_1.png" onclick="applyShapeMask('asset/user_image_frame_1.png')" />
+        <img src="asset/user_image_frame_2.png" onclick="applyShapeMask('asset/user_image_frame_2.png')" />
+        <img src="asset/user_image_frame_3.png" onclick="applyShapeMask('asset/user_image_frame_3.png')" />
+        <img src="asset/user_image_frame_4.png" onclick="applyShapeMask('asset/user_image_frame_4.png')" />
+    </div>
+    <button class="imagebut" onclick="finalizeImage()">Use this Image</button>
+</div>
+
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
